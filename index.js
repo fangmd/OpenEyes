@@ -10,11 +10,18 @@ const store = configureStore();
 
 
 import React from 'react';
+import { View } from 'react-native'
+import { Toast } from './src/utils/EasyToast';
+
+
 class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <Router />
+                <View style={{ flex: 1 }}>
+                    <Toast />
+                    <Router />
+                </View>
             </Provider>
         )
     }
