@@ -27,7 +27,7 @@ const mainTab = createBottomTabNavigator(
                     iconName = `ios-expand${focused ? '' : '-outline'}`;
                 } else if (routeName === 'Notification') {
                     iconName = `ios-ionic${focused ? '' : '-outline'}`;
-                }else if(routeName === 'Focus'){
+                } else if (routeName === 'Focus') {
                     iconName = `ios-checkbox${focused ? '' : '-outline'}`;
                 }
                 return <Ionicons name={iconName} size={25} color={tintColor} />;
@@ -43,5 +43,13 @@ const mainTab = createBottomTabNavigator(
 
 export const Router = StackNavigator({
     Splash: SplashScreen,
-    Main: mainTab,
-})
+    Main: {
+        screen: mainTab,
+    }
+}, {
+        navigationOptions: {
+            // headerLeft: null,
+            // headerRight: null,
+            header: null,
+        }
+    })

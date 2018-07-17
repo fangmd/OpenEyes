@@ -1,6 +1,6 @@
 /** @format */
 
-import { AppRegistry, Modal } from 'react-native';
+import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
 import { Router } from './src/routers/Router';
 import { Provider } from 'react-redux';
@@ -10,7 +10,7 @@ const store = configureStore();
 
 
 import React from 'react';
-import { View } from 'react-native'
+import { View, StatusBar } from 'react-native'
 import { Toast } from './src/utils/EasyToast';
 
 
