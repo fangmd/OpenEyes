@@ -44,7 +44,7 @@ export default HeaderView;
 
 const styles = StyleSheet.create({
     root: {
-
+        backgroundColor: 'white',
     },
     titleRoot: {
         height: 40,

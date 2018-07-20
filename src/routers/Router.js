@@ -1,13 +1,14 @@
 import HomeScreen from '../modules/home/HomeScreen';
 import { StackNavigator, createBottomTabNavigator } from 'react-navigation';
 import SplashScreen from '../modules/splash/SplashScreen';
-// import MainScreen from '../modules/main/MainScreen';
 import MineScreen from '../modules/mine/MineScreen';
 import FocusScreen from '../modules/focus/FocusScreen';
 import NotificationScreen from '../modules/notification/NotificationScreen';
 
 import React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as UImage from '../styles/Imgs';
+import { Image } from 'react-native';
+import { commonStyles } from '../styles/CommonStyles';
 
 
 const mainTab = createBottomTabNavigator(
@@ -22,15 +23,15 @@ const mainTab = createBottomTabNavigator(
                 const { routeName } = navigation.state;
                 let iconName;
                 if (routeName === 'Home') {
-                    iconName = `ios-home${focused ? '' : '-outline'}`;
+                    iconName = focused ? UImage.main_tab_0_selected : UImage.main_tab_0;
                 } else if (routeName === 'Mine') {
-                    iconName = `ios-expand${focused ? '' : '-outline'}`;
+                    iconName = focused ? UImage.main_tab_3_selected : UImage.main_tab_3;
                 } else if (routeName === 'Notification') {
-                    iconName = `ios-ionic${focused ? '' : '-outline'}`;
+                    iconName = focused ? UImage.main_tab_2_selected : UImage.main_tab_2;
                 } else if (routeName === 'Focus') {
-                    iconName = `ios-checkbox${focused ? '' : '-outline'}`;
+                    iconName = focused ? UImage.main_tab_1_selected : UImage.main_tab_1;
                 }
-                return <Ionicons name={iconName} size={25} color={tintColor} />;
+                return (<Image style={commonStyles.mainTabImg} source={iconName} />);
             }
         }),
         tabBarOptions: {

@@ -6,8 +6,14 @@ class NotiSubScreen extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
+        this.props = {
+            data: [
+            ],
+            error: false,
+            refreshing: false,
             url: "",
+        }
+        this.state = {
             title: "",
         }
     }
@@ -15,7 +21,10 @@ class NotiSubScreen extends React.Component {
 
 
     render() {
-        let { refreshing, data } = this.props;
+        let { refreshing, data, url } = this.props;
+        console.log("url:" + url)
+
+        refreshing = false;
 
         return (
 
@@ -36,6 +45,7 @@ class NotiSubScreen extends React.Component {
     }
 
     _onRefreshing = () => {
+        console.log('_onRefreshing')
         this.props.dispatch(refresh());
     }
 

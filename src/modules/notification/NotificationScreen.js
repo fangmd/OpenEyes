@@ -4,6 +4,8 @@ import HeaderView from '../widgets/HeaderView';
 import { commonStyles } from '../../styles/CommonStyles';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { Colors } from '../../styles/Colors';
+import NotiSubScreen from './NotiSubScreen';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 let dataSrc = {
     tabList: [
@@ -20,15 +22,6 @@ let dataSrc = {
     ],
     defaultIdx: 0
 }
-
-const FirstRoute = () => (
-    <View style={[styles.container, { backgroundColor: '#ff4081' }]} />
-);
-
-const SecondRoute = () => (
-    <View style={[styles.container, { backgroundColor: '#673ab7' }]} />
-);
-
 
 class NotificationScreen extends React.Component {
 
@@ -49,49 +42,33 @@ class NotificationScreen extends React.Component {
     render() {
         let title = 'Notification';
 
-        let tabView = <TabView
-            navigationState={this.state}
-            renderScene={SceneMap({
-                first: FirstRoute,
-                second: SecondRoute,
-            })}
-            renderTabBar={this._renderTabBar}
-
-            onIndexChange={index => this.setState({ index })}
-            initialLayout={{ width: Dimensions.get('window').width }}
-        />
-
         return (
             <View style={commonStyles.screenRoot}>
                 <HeaderView title={title} />
-                {tabView}
+
+                {this._renderScrollTab()}
             </ View>
         )
     }
 
-    _renderTabBar = props => {
-        const inputRange = props.navigationState.routes.map((x, i) => i);
-
+    _renderScrollTab() {
         return (
-            <View style={styles.tabBar}>
-                {props.navigationState.routes.map((route, i) => {
-                    const color = props.position.interpolate({
-                        inputRange,
-                        outputRange: inputRange.map(
-                            inputIndex => (inputIndex === i ? Colors.text_black : Colors.text_grey)
-                        ),
-                    });
-                    return (
-                        <TouchableOpacity
-                            style={styles.tabItem}
-                            onPress={() => this.setState({ index: i })}>
-                            <Animated.Text style={{ color }}>{route.title}</Animated.Text>
-                        </TouchableOpacity>
-                    );
-                })}
-            </View>
-        );
-    };
+            <ScrollableTabView
+                tabBarInactiveTextColor={Colors.text_grey} // 没有被选中的文字颜色
+                tabBarActiveTextColor={Colors.text_black}      // 选中的文字颜色
+                tabBarBackgroundColor={Colors.white}     // 选项卡背景颜色
+                tabBarUnderlineStyle={{ backgroundColor: Colors.text_black, height: 2 }}   //下划线的样式
+                initialPage={0}
+                renderTabBar={() => <ScrollableTabBar style={{ height: 40, borderWidth: 0, elevation: 2 }} tabStyle={{ height: 39 }}
+                    underlineHeight={2} />}>
+
+                <NotiSubScreen QUERY='ALL' tabLabel='官方' url='http://baobab.kaiyanapp.com/api/v3/messages'/>
+                <NotiSubScreen QUERY='Android' tabLabel='互动' />
+
+            </ScrollableTabView>
+        )
+    }
+
 }
 
 export default NotificationScreen;

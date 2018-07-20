@@ -1,4 +1,4 @@
-import * as LogTag from '../constants/LogTags'
+import * as LogTag from '../constants/LogTags';
 
 const BASE_URL = 'http://www.wanandroid.com'
 
