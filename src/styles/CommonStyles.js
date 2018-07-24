@@ -7,6 +7,9 @@ export const commonStyles = StyleSheet.create({
     mainTabImg: {
         width: 24,
         height: 24,
+    },
+    flastList:{
+        
     }
 });
 

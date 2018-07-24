@@ -39,6 +39,10 @@ class NotificationScreen extends React.Component {
 
     // static title = '通知';
 
+    constructor(props){
+        super(props);
+    }
+
     render() {
         let title = 'Notification';
 

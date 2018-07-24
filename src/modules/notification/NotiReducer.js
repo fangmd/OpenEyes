@@ -1,6 +1,14 @@
 import * as types from './NotiC';
 import { handleAction, handleActions } from 'redux-actions';
 
+        // this.props = {
+        //     data: [
+        //     ],
+        //     error: false,
+        //     refreshing: false,
+        //     url: "",
+        // }
+        
 const initState = {
     data: [
 
@@ -15,7 +23,7 @@ export default handleActions({
             return {
                 ...state,
                 refreshing: false,
-                data: action.payload,
+                data: action.payload.messageList,
             }
         }
     },
