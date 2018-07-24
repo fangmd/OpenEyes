@@ -5,6 +5,7 @@ import { commonStyles } from '../../styles/CommonStyles';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { Colors } from '../../styles/Colors';
 import NotiSubScreen from './NotiSubScreen';
+import NotiSubScreen2 from './NotiSubScreen2';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 let dataSrc = {
@@ -67,7 +68,7 @@ class NotificationScreen extends React.Component {
                     underlineHeight={2} />}>
 
                 <NotiSubScreen QUERY='ALL' tabLabel='官方' url='http://baobab.kaiyanapp.com/api/v3/messages'/>
-                <NotiSubScreen QUERY='Android' tabLabel='互动' />
+                <NotiSubScreen2 QUERY='Android' tabLabel='互动' url=''/>
 
             </ScrollableTabView>
         )

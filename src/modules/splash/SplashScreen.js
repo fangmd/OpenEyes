@@ -28,7 +28,7 @@ class SplashScreen extends React.Component {
                     style={{ width: 66, height: 58 }}
                     source={{ uri: imgUrl }} />
 
-                <Ionicons name='ios-arrow-forward' size={25} color={tintColor} />
+                <Ionicons name='ios-arrow-forward' size={23} color={tintColor} />
 
             </View>
         )

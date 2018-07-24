@@ -17,3 +17,17 @@ export function refresh(url) {
     }
 
 }
+
+export function refresh2(url) {
+    return dispatch => {
+        dispatch(createAction(types.NOTI_LOADING)());
+
+        HttpUtil.get(url)
+            .then(resp => {
+                dispatch(createAction(types.NOTI_DONE)(resp));
+            }).catch(error => {
+                dispatch(createAction(types.NOTI_ERROR)());
+            });
+    }
+
+}
