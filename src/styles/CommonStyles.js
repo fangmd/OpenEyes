@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import * as Constants from '../constants/C';
+
 
 export const commonStyles = StyleSheet.create({
     screenRoot: {
@@ -8,8 +10,11 @@ export const commonStyles = StyleSheet.create({
         width: 24,
         height: 24,
     },
-    flastList:{
-        
-    }
+    flastList: {
+
+    },
+    statusBar: {
+        height: Platform.OS === Constants.IOS ? Constants.STATUS_BAR_HEIGHT : 0,
+    },
 });
 

@@ -1,18 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { commonStyles } from '../../styles/CommonStyles';
 
-const STATUS_BAR_HEIGHT = 20;
+
 
 class HeaderView extends React.Component {
 
     render() {
+
+        let statusBar = (
+            <View style={commonStyles.statusBar} >
+                <StatusBar />
+            </View>
+        )
+
         return (
             <View style={styles.root}>
-                <View style={styles.statusBar} >
-                    <StatusBar />
-                </View>
-
+                {statusBar}
                 <View style={styles.titleRoot}>
                     <View style={styles.leftContainer}>
                         {this._renderLeftBtn()}
@@ -70,7 +75,5 @@ const styles = StyleSheet.create({
         width: 40,
         lineHeight: 40,
         textAlign: 'center'
-    }, statusBar: {
-        height: Platform.OS === 'ios' ? STATUS_BAR_HEIGHT : 0,
     },
 })
