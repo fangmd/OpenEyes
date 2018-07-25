@@ -9,6 +9,7 @@ import React from 'react';
 import * as UImage from '../styles/Imgs';
 import { Image } from 'react-native';
 import { commonStyles } from '../styles/CommonStyles';
+import WebViewScreen from '../modules/webview/WebViewScreen';
 
 
 const mainTab = createBottomTabNavigator(
@@ -37,6 +38,8 @@ const mainTab = createBottomTabNavigator(
         tabBarOptions: {
             activeTintColor: 'black',
             inactiveTintColor: 'gray',
+            activeBackgroundColor: 'white',
+            inactiveBackgroundColor: 'white',
         }
     }
 
@@ -46,11 +49,15 @@ export const Router = StackNavigator({
     Splash: SplashScreen,
     Main: {
         screen: mainTab,
-    }
-}, {
+    },
+    WebView: WebViewScreen,  
+},
+    {
         navigationOptions: {
             // headerLeft: null,
             // headerRight: null,
             header: null,
         }
     })
+
+    

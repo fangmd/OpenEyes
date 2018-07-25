@@ -1,5 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 import * as Constants from '../constants/C';
+import { Colors } from './Colors';
 
 
 export const commonStyles = StyleSheet.create({
@@ -15,6 +16,10 @@ export const commonStyles = StyleSheet.create({
     },
     statusBar: {
         height: Platform.OS === Constants.IOS ? Constants.STATUS_BAR_HEIGHT : 0,
+    },
+    divideHorizontal:{
+        height: 1,
+        backgroundColor: Colors.divide,
     },
 });
 

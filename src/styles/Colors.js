@@ -10,4 +10,5 @@ export const Colors = {
     itemBg: '#fff',
 
     divideHorizontal: '#adadad',
+    divide: '#adadad',
 };

@@ -29,7 +29,7 @@ class MineScreen extends React.Component {
                 </View>
 
                 <View style={styles.userMenuRoot}>
-                    <ImageText style={styles.userMenuItem} text='喜欢' imgUrl='md-heart-outline'/>
+                    <ImageText style={styles.userMenuItem} text='喜欢' imgUrl='md-heart-outline' />
                     <View style={styles.divideVertical} />
                     <ImageText style={styles.userMenuItem} text='缓存' imgUrl='md-cloud-download' />
                 </View>
@@ -39,25 +39,33 @@ class MineScreen extends React.Component {
                 <TouchableNativeFeedback
                     onPress={this._onPressButton}
                     background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-                    <Text style={styles.item}>我的关注</Text>
+                    <View>
+                        <Text style={styles.item}>我的关注</Text>
+                    </View>
                 </TouchableNativeFeedback>
 
                 <TouchableNativeFeedback
                     onPress={this._onPressButton}
                     background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-                    <Text style={styles.item}>观看记录</Text>
+                    <View>
+                        <Text style={styles.item}>观看记录</Text>
+                    </View>
                 </TouchableNativeFeedback>
 
                 <TouchableNativeFeedback
                     onPress={this._onPressButton}
                     background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-                    <Text style={styles.item}>意见反馈</Text>
+                    <View>
+                        <Text style={styles.item}>意见反馈</Text>
+                    </View>
                 </TouchableNativeFeedback>
 
                 <TouchableNativeFeedback
                     onPress={this._onPressButton}
                     background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-                    <Text style={styles.item}>我要投稿</Text>
+                    <View>
+                        <Text style={styles.item}>我要投稿</Text>
+                    </View>
                 </TouchableNativeFeedback>
 
 
@@ -72,7 +80,8 @@ class MineScreen extends React.Component {
 
 const styles = StyleSheet.create({
     root: {
-
+        flex: 1,
+        backgroundColor: 'white',
     },
     menuRoot: {
         alignItems: 'flex-end',
