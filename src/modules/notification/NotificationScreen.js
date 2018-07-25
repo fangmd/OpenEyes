@@ -67,8 +67,8 @@ class NotificationScreen extends React.Component {
                 renderTabBar={() => <ScrollableTabBar style={{ height: 40, borderWidth: 0, elevation: 2 }} tabStyle={{ height: 39 }}
                     underlineHeight={2} />}>
 
-                <NotiSubScreen QUERY='ALL' tabLabel='官方' url='http://baobab.kaiyanapp.com/api/v3/messages'/>
-                <NotiSubScreen2 QUERY='Android' tabLabel='互动' url=''/>
+                <NotiSubScreen QUERY='ALL' tabLabel='官方' url='http://baobab.kaiyanapp.com/api/v3/messages' navigation={this.props.navigation}/>
+                <NotiSubScreen2 QUERY='Android' tabLabel='互动' url='' navigation={this.props.navigation}/>
 
             </ScrollableTabView>
         )

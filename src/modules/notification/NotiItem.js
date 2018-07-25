@@ -1,30 +1,40 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, TouchableNativeFeedback, Platform } from 'react-native';
 import { Colors } from '../../styles/Colors';
 import { FontSize } from '../../styles/FontSize';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { commonStyles } from '../../styles/CommonStyles';
 
 
 class NotiItem extends React.PureComponent {
 
     render() {
         return (
-            <View style={styles.root}>
+            <TouchableNativeFeedback
+                onPress={this._onPressButton}
+                background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+                <View style={styles.root}>
 
-                <Image style={styles.img} source={{ uri: this.props.data.icon }} />
+                    <Image style={styles.img} source={{ uri: this.props.data.icon }} />
 
-                <View style={styles.rightRoot}>
-                    <Text style={styles.title}>{this.props.data.title}</Text>
-                    <View style={styles.timeRoot}>
-                        <Text style={styles.subTitle}>{this.props.data.date}</Text>
-                        <Ionicons name='ios-arrow-forward' size={21} color={Colors.text_f8f8f8} />
+                    <View style={styles.rightRoot}>
+                        <Text style={styles.title}>{this.props.data.title}</Text>
+                        <View style={styles.timeRoot}>
+                            <Text style={styles.subTitle}>{this.props.data.date}</Text>
+                            <Ionicons name='ios-arrow-forward' size={21} color={Colors.text_f8f8f8} />
+                        </View>
+                        <Text style={styles.content}>{this.props.data.content}</Text>
+
+                        <View style={commonStyles.divideHorizontal} />
                     </View>
-                    <Text style={styles.content}>{this.props.data.content}</Text>
                 </View>
-            </View>
+            </TouchableNativeFeedback>
         )
     }
 
+    _onPressButton = () => {
+        this.props.onItemClick(this.props.data.actionUrl);
+    }
 }
 
 const styles = StyleSheet.create({
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
         marginLeft: 4,
     },
     title: {
-        marginTop: 20,
+        marginTop: 16,
         color: Colors.text_black,
         fontSize: FontSize.noti_item_title,
     },
@@ -63,6 +73,7 @@ const styles = StyleSheet.create({
         color: Colors.text_black,
         fontSize: FontSize.noti_item_content,
         paddingRight: 10,
+        marginBottom: 12,
     },
     imgRight: {
 

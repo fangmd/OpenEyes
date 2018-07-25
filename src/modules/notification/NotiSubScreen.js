@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Alert } from 'react-native';
 import { refresh } from './NotiAction';
 import NotiItem from './NotiItem';
 import { commonStyles } from '../../styles/CommonStyles';
 import { connect } from 'react-redux';
+
+
 
 class NotiSubScreen extends React.Component {
 
@@ -25,12 +27,9 @@ class NotiSubScreen extends React.Component {
                     data={data}
                     refreshing={refreshing}
                     onRefresh={this._onRefreshing}
-                    renderItem={({ item }) => <NotiItem data={item} />}
+                    renderItem={({ item }) => <NotiItem data={item} onItemClick={this._onItemClick} />}
                     keyExtractor={(item, index) => String(index)}
                 />
-
-
-
 
             </View>
         )
@@ -43,6 +42,12 @@ class NotiSubScreen extends React.Component {
     _onRefreshing = () => {
         console.log('_onRefreshing')
         this.props.dispatch(refresh(this.props.url));
+    }
+
+    _onItemClick = (url_string) => {
+        let url_string_decode = decodeURIComponent(url_string)
+        let arr = url_string.split('&url=')
+        this.props.navigation.navigate('WebView', { webUrl: arr[1] })
     }
 }
 
