@@ -47,7 +47,8 @@ class NotiSubScreen extends React.Component {
     _onItemClick = (url_string) => {
         let url_string_decode = decodeURIComponent(url_string)
         let arr = url_string.split('&url=')
-        this.props.navigation.navigate('WebView', { webUrl: arr[1] })
+        let title = arr[0].split('title=')[1]
+        this.props.navigation.navigate('WebView', { webUrl: arr[1], title: title})
     }
 }
 

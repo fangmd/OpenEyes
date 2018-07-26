@@ -2,12 +2,17 @@ import React from 'react';
 import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { commonStyles } from '../../styles/CommonStyles';
-
-
+import PropTypes from 'prop-types';
+import { Colors } from '../../styles/Colors';
+import { FontSize } from '../../styles/FontSize';
 
 class HeaderView extends React.Component {
 
     render() {
+
+        const { title, showLeft } = this.props;
+
+        console.log('HeaderView: title:' + title + 'showLeft:' + showLeft)
 
         let statusBar = (
             <View style={commonStyles.statusBar} >
@@ -23,7 +28,7 @@ class HeaderView extends React.Component {
                         {this._renderLeftBtn()}
                     </View>
 
-                    <Text style={styles.title}>{this.props.title}</Text>
+                    <Text style={styles.title}>{title}</Text>
 
                     <View style={styles.rightContainer}>
                         {this._renderRightBtn()}
@@ -34,6 +39,13 @@ class HeaderView extends React.Component {
     }
 
     _renderLeftBtn() {
+        const { showLeft } = this.props;
+        const tintColor = '#000'
+        if (showLeft) {
+            return (
+                <Ionicons name='ios-arrow-back' size={23} color={tintColor} />
+            )
+        }
         return null;
     }
 
@@ -45,6 +57,11 @@ class HeaderView extends React.Component {
     }
 }
 
+HeaderView.propTypes = {
+    showLeft: PropTypes.bool,
+    title: PropTypes.string,
+}
+
 export default HeaderView;
 
 const styles = StyleSheet.create({
@@ -52,7 +69,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     titleRoot: {
-        height: 40,
+        height: 52,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -60,6 +77,7 @@ const styles = StyleSheet.create({
     },
     leftContainer: {
         flex: 1,
+        paddingLeft: 14,
     },
     rightContainer: {
         flex: 1,
@@ -68,7 +86,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-
+        color: Colors.text_black,
+        fontSize: FontSize.toolBarTitle,
     },
     btn: {
         height: 40,
