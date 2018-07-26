@@ -14,7 +14,7 @@ class WebViewScreen extends React.Component {
 
         console.log('WebViewScreen load :' + webUrl + '  title:' + title)
         return (
-            <View>
+            <View style={styles.root}>
                 <HeaderView showLeft={true} title={title} />
                 <WebView
                     source={{ uri: webUrlResult }}
@@ -31,6 +31,9 @@ WebViewScreen.propTypes = {
 }
 
 const styles = StyleSheet.create({
+    root:{
+        flex: 1,
+    },
     webView: {
         flex: 1,
     }

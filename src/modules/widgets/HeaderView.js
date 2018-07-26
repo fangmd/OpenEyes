@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, Platform } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import BackView from './BackView';
 import { commonStyles } from '../../styles/CommonStyles';
 import PropTypes from 'prop-types';
 import { Colors } from '../../styles/Colors';
 import { FontSize } from '../../styles/FontSize';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class HeaderView extends React.Component {
 
@@ -40,10 +41,9 @@ class HeaderView extends React.Component {
 
     _renderLeftBtn() {
         const { showLeft } = this.props;
-        const tintColor = '#000'
         if (showLeft) {
             return (
-                <Ionicons name='ios-arrow-back' size={23} color={tintColor} />
+                <BackView />
             )
         }
         return null;
