@@ -1,7 +1,8 @@
 'use strict';
 import React from 'react';
-import { View, Text, Alert, Image } from 'react-native';
+import { View, Text, Alert, Image, StyleSheet } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import * as Imgs from '../../styles/Imgs';
 
 const DELAY_TIME = 2000;
 
@@ -18,21 +19,27 @@ class SplashScreen extends React.Component {
         let iconName = 'ios-options';
         let tintColor = '000';
         return (
-            <View>
-                <Text>Splash</Text>
+            <View style={styles.root}>
                 <Image
-                    source={require('../../assets/imgs/ic_tab_strip_icon_feed.png')}
+                    style={styles.root}
+                    source={Imgs.author_account_bg}
                 />
-
-                <Image
-                    style={{ width: 66, height: 58 }}
-                    source={{ uri: imgUrl }} />
-
-                <Ionicons name='ios-arrow-forward' size={23} color={tintColor} />
-
             </View>
         )
     }
 }
+
+
+// <Image
+// style={{ width: 66, height: 58 }}
+// source={{ uri: imgUrl }} />
+
+// <Ionicons name='ios-arrow-forward' size={23} color={tintColor} />
+
+const styles = StyleSheet.create({
+    root: {
+        flex: 1,
+    }
+})
 
 export default SplashScreen;

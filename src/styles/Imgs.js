@@ -23,8 +23,6 @@ export const action_focus = require('../assets/imgs/ic_action_focus.png')
 
 export const default_avatar = require('../assets/imgs/pgc_default_avatar.png')
 
-
-
-
+export const author_account_bg = require('../assets/imgs/author_account_bg.png')
 
 
