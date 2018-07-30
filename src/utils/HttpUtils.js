@@ -1,10 +1,10 @@
 import * as LogTag from '../constants/LogTags';
 
-const BASE_URL = 'http://www.wanandroid.com'
+const BASE_URL = 'http://www.wanandroid.com';
 
 
 function getFormData(params) {
-    let formData = new FormData()
+    let formData = new FormData();
     for (var key in params) {
         formData.append(key, params[key])
     }
@@ -13,19 +13,20 @@ function getFormData(params) {
 
 function request(method, url, params = '') {
 
-    let request_url = BASE_URL + url
+    let request_url = BASE_URL + url;
     if (url.startsWith('http://') || url.startsWith('https://'))
-        request_url = url
+        request_url = url;
     else
-        request_url = BASE_URL + url
+        request_url = BASE_URL + url;
 
 
-    console.log(LogTag.NET_TAG, method, request_url)
+    console.log(LogTag.NET_TAG, method, request_url);
 
     let config = {
         method: method
     }
-    if (params != '') {
+
+    if (params !== '') {
         config['body'] = getFormData(params)
     }
 
@@ -33,7 +34,7 @@ function request(method, url, params = '') {
     // 'Cookie':RealmUtil.getCookie()
     // }
 
-    console.log(LogTag.NET_TAG, config)
+    console.log(LogTag.NET_TAG, config);
 
     return new Promise((resole, reject) => {
         fetch(request_url, config)
@@ -45,15 +46,15 @@ function request(method, url, params = '') {
                 return res.json()
             })
             .then(json => {
-                console.log(LogTag.NET_SUCCESS, json)
-                if (json.errorCode == -1) {
+                console.log(LogTag.NET_SUCCESS, json);
+                if (json.errorCode === -1) {
                     reject(json.errorMsg)
                 } else {
                     resole(json)
                 }
             })
             .catch(err => {
-                console.log(LogTag.NET_FAIL, err)
+                console.log(LogTag.NET_FAIL, err);
                 reject(err)
             })
     })
@@ -63,6 +64,7 @@ export default class HttpUtil {
     static get(url, params = '') {
         return request('GET', url, params)
     }
+
     static post(url, params = '') {
         return request('POST', url, params)
     }
