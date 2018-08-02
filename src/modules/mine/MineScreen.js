@@ -1,40 +1,40 @@
 'use strict';
 import React from 'react';
-import { View, Text, Image, TouchableNativeFeedback, Platform, StyleSheet, StatusBar } from 'react-native';
+import {View, Text, Image, TouchableNativeFeedback, Platform, StyleSheet, StatusBar} from 'react-native';
 import ImageText from '../widgets/ImageText';
 import * as Imgs from '../../styles/Imgs';
-import { Colors } from '../../styles/Colors';
-import { FontSize } from '../../styles/FontSize';
-import { EasyToast } from '../../utils/EasyToast';
-import { commonStyles } from '../../styles/CommonStyles';
+import {Colors} from '../../styles/Colors';
+import {FontSize} from '../../styles/FontSize';
+import {EasyToast} from '../../utils/EasyToast';
+import {commonStyles} from '../../styles/CommonStyles';
 
 class MineScreen extends React.Component {
     render() {
         return (
             <View style={styles.root}>
-                <View style={commonStyles.statusBar} >
-                    <StatusBar />
+                <View style={commonStyles.statusBar}>
+                    <StatusBar/>
                 </View>
 
                 <View style={styles.menuRoot}>
-                    <Image style={styles.menuMore} source={Imgs.menu_more} />
+                    <Image style={styles.menuMore} source={Imgs.menu_more}/>
                 </View>
 
                 <View style={styles.avatarRoot}>
-                    <Image style={styles.avatar} source={Imgs.default_avatar} />
+                    <Image style={styles.avatar} source={Imgs.default_avatar}/>
                 </View>
 
-                <View style={{ height: 58 }}>
+                <View style={{height: 58}}>
                     <Text style={styles.loginPromp}>点击登入即可发表评论及同步已喜欢视频</Text>
                 </View>
 
                 <View style={styles.userMenuRoot}>
-                    <ImageText style={styles.userMenuItem} text='喜欢' imgUrl='md-heart-outline' />
-                    <View style={styles.divideVertical} />
-                    <ImageText style={styles.userMenuItem} text='缓存' imgUrl='md-cloud-download' />
+                    <ImageText style={styles.userMenuItem} text='喜欢' imgUrl='md-heart-outline'/>
+                    <View style={styles.divideVertical}/>
+                    <ImageText style={styles.userMenuItem} text='缓存' imgUrl='md-cloud-download'/>
                 </View>
 
-                <View style={styles.divideHorizontal} />
+                <View style={styles.divideHorizontal}/>
 
                 <TouchableNativeFeedback
                     onPress={this._onPressButton}
@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     },
     userMenuItem: {
         height: 85,
-
     },
     divideVertical: {
         height: 40,
@@ -129,7 +128,7 @@ const styles = StyleSheet.create({
         color: Colors.text_black,
         fontSize: FontSize.menu_item,
     },
-})
+});
 
 
 export default MineScreen;
