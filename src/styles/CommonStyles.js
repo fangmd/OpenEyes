@@ -12,7 +12,7 @@ export const commonStyles = StyleSheet.create({
         height: 24,
     },
     flastList: {
-
+        
     },
     statusBar: {
         height: Platform.OS === Constants.IOS ? Constants.STATUS_BAR_HEIGHT : 0,

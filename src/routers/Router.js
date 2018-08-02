@@ -1,5 +1,5 @@
 import HomeScreen from '../modules/home/HomeScreen';
-import { StackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import SplashScreen from '../modules/splash/SplashScreen';
 import MineScreen from '../modules/mine/MineScreen';
 import FocusScreen from '../modules/focus/FocusScreen';
@@ -45,12 +45,12 @@ const mainTab = createBottomTabNavigator(
 
 )
 
-export const Router = StackNavigator({
+export const Router = createStackNavigator({
     Splash: SplashScreen,
     Main: {
         screen: mainTab,
     },
-    WebView: WebViewScreen,  
+    WebView: WebViewScreen,
 },
     {
         navigationOptions: {
@@ -60,4 +60,3 @@ export const Router = StackNavigator({
         }
     })
 
-    
