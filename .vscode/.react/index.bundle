@@ -99737,12 +99737,14 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     text_grey: '#868686',
     text_grey_88888: '#888888',
     text_f8f8f8: '#8a8a8a',
+    text_444444: '#444444',
     white: '#fff',
     itemBg: '#fff',
     itemBg_f6f6f6: '#f6f6f6',
     divideHorizontal: '#adadad',
     divide: '#adadad',
-    divide_ededed: '#ededed'
+    divide_ededed: '#ededed',
+    trans_bg: '#000000'
   };
   exports.Colors = Colors;
 },697,[],"Colors.js");
@@ -99758,7 +99760,9 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     menu_item: 14,
     toolBarTitle: 18,
     item_title: 14,
-    item_title_16: 16
+    item_title_13: 13,
+    item_subtitle: 12,
+    item_title_15: 15
   };
   exports.FontSize = FontSize;
 },698,[],"FontSize.js");
@@ -100053,15 +100057,15 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     },
     title: {
       color: 'black',
-      fontSize: _FontSize.FontSize.item_title_16
+      fontSize: _FontSize.FontSize.item_title_15
     },
     content: {
-      color: 'black',
+      color: _Colors.Colors.text_444444,
       fontSize: _FontSize.FontSize.item_title
     },
     subTitle: {
       color: _Colors.Colors.text_grey,
-      fontSize: _FontSize.FontSize.item_title
+      fontSize: _FontSize.FontSize.item_subtitle
     },
     rowRoot: {
       flexDirection: 'row'
@@ -101804,6 +101808,10 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
 
   var _propTypes = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "prop-types"));
 
+  var _FontSize = _$$_REQUIRE(_dependencyMap[6], "../../../styles/FontSize");
+
+  var _TimeUtils = _$$_REQUIRE(_dependencyMap[7], "../../../utils/TimeUtils");
+
   var _jsxFileName = "/Users/double/reactNativeProject/OpenEyes/src/modules/focus/dynamic/DynamicItem.js";
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -101858,13 +101866,13 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           style: styles.root,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 19
+            lineNumber: 21
           }
         }, _react.default.createElement(_reactNative.View, {
           style: styles.left,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 20
+            lineNumber: 22
           }
         }, _react.default.createElement(_reactNative.Image, {
           style: styles.img,
@@ -101873,66 +101881,66 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 21
+            lineNumber: 23
           }
         })), _react.default.createElement(_reactNative.View, {
           style: styles.right,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 25
+            lineNumber: 27
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: [_CommonStyles.commonStyles.title, styles.title],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 26
+            lineNumber: 28
           }
         }, data.user.nickname), _react.default.createElement(_reactNative.View, {
           style: _CommonStyles.commonStyles.rowRoot,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27
+            lineNumber: 29
           }
         }, _react.default.createElement(_reactNative.Text, {
           style: [_CommonStyles.commonStyles.subTitle],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 28
+            lineNumber: 30
           }
         }, "\u8BC4\u8BBA\uFF1A")), _react.default.createElement(_reactNative.Text, {
           style: [_CommonStyles.commonStyles.content, styles.content],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 30
+            lineNumber: 32
           }
         }, data.reply.message), this._renderVideo(), _react.default.createElement(_reactNative.View, {
           style: _CommonStyles.commonStyles.rowRoot,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 34
-          }
-        }, _react.default.createElement(_reactNative.Text, {
-          style: _CommonStyles.commonStyles.content,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 35
-          }
-        }, "\u56DE\u590D"), _react.default.createElement(_reactNative.Text, {
-          style: _CommonStyles.commonStyles.content,
-          __source: {
-            fileName: _jsxFileName,
             lineNumber: 36
           }
-        }, "09:17"), _react.default.createElement(_reactNative.Text, {
-          style: _CommonStyles.commonStyles.content,
+        }, _react.default.createElement(_reactNative.Text, {
+          style: styles.reply,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 37
           }
-        }, "12"), _react.default.createElement(_reactNative.Image, {
+        }, "\u56DE\u590D"), _react.default.createElement(_reactNative.Text, {
+          style: styles.time,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 38
+          }
+        }, "09:17"), _react.default.createElement(_reactNative.Text, {
+          style: styles.subscribeCnt,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 39
+          }
+        }, "12"), _react.default.createElement(_reactNative.Image, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40
           }
         })), _react.default.createElement(_reactNative.View, {
           style: [_CommonStyles.commonStyles.divideHorizontal_2, {
@@ -101941,25 +101949,60 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
           }],
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 41
+            lineNumber: 43
           }
         })));
       }
     }, {
       key: "_renderVideo",
       value: function _renderVideo() {
+        var data = this.props.data.data;
+        var firTime = (0, _TimeUtils.formatTimeToMin)(data.simpleVideo.duration);
         return _react.default.createElement(_reactNative.View, {
           style: styles.videoRoot,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 55
           }
-        }, _react.default.createElement(_reactNative.Text, {
+        }, _react.default.createElement(_reactNative.View, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 56
           }
-        }, "Video"));
+        }, _react.default.createElement(_reactNative.Image, {
+          style: styles.videoImg,
+          source: {
+            uri: data.simpleVideo.cover.feed
+          },
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 57
+          }
+        }), _react.default.createElement(_reactNative.Text, {
+          style: styles.videoDuration,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 58
+          }
+        }, firTime)), _react.default.createElement(_reactNative.View, {
+          style: styles.videoRight,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61
+          }
+        }, _react.default.createElement(_reactNative.Text, {
+          style: styles.videoTitle,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 62
+          }
+        }, data.simpleVideo.title), _react.default.createElement(_reactNative.Text, {
+          style: styles.category,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 63
+          }
+        }, "#", data.simpleVideo.category)));
       }
     }]);
 
@@ -101978,7 +102021,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     left: {
       width: 60,
       alignItems: 'center',
-      marginTop: 24
+      marginTop: 18
     },
     img: {
       height: 37,
@@ -101989,21 +102032,72 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
       flex: 1
     },
     title: {
-      marginTop: 24,
-      marginBottom: 4
+      marginTop: 16,
+      marginBottom: 4,
+      fontWeight: 'bold'
     },
     content: {
       marginTop: 12,
-      marginBottom: 10
+      marginBottom: 10,
+      marginRight: 14
     },
     videoRoot: {
+      flexDirection: 'row',
       marginRight: 16,
       marginBottom: 8,
       backgroundColor: _Colors.Colors.itemBg_f6f6f6,
       paddingTop: 11,
       paddingLeft: 13,
       paddingBottom: 11,
-      paddingRight: 13
+      paddingRight: 13,
+      borderRadius: 8
+    },
+    reply: {
+      color: _Colors.Colors.text_grey,
+      fontSize: _FontSize.FontSize.item_title,
+      fontWeight: 'bold'
+    },
+    time: {
+      color: _Colors.Colors.text_grey,
+      fontSize: _FontSize.FontSize.item_title,
+      marginLeft: 20,
+      flex: 1
+    },
+    subscribeCnt: {
+      color: _Colors.Colors.text_444444,
+      fontSize: _FontSize.FontSize.item_title,
+      marginRight: 20
+    },
+    videoImg: {
+      width: 130,
+      height: 72
+    },
+    videoDuration: {
+      position: 'absolute',
+      textAlign: 'center',
+      backgroundColor: _Colors.Colors.trans_bg,
+      color: 'white',
+      width: 28,
+      height: 19,
+      borderRadius: 2,
+      fontSize: _FontSize.FontSize.item_subtitle,
+      bottom: 2,
+      right: 2
+    },
+    videoRight: {
+      flex: 1,
+      paddingLeft: 13,
+      paddingRight: 11,
+      justifyContent: 'center'
+    },
+    videoTitle: {
+      color: 'black',
+      fontWeight: 'bold',
+      fontSize: _FontSize.FontSize.item_title
+    },
+    category: {
+      fontSize: _FontSize.FontSize.item_title_13,
+      color: _Colors.Colors.text_grey
     }
   });
 
@@ -102012,7 +102106,7 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   };
   var _default2 = DynamicItem;
   exports.default = _default2;
-},710,[1,2,3,512,697,297],"DynamicItem.js");
+},710,[1,2,3,512,697,297,698,835],"DynamicItem.js");
 __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
   "use strict";
 
@@ -110246,6 +110340,22 @@ __d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
     });
   });
 },826,[],"redux-logger.js");
+__d(function (global, _$$_REQUIRE, module, exports, _dependencyMap) {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.formatTimeToMin = formatTimeToMin;
+
+  function formatTimeToMin(time) {
+    if (time <= 60) {
+      return '00:' + time;
+    } else {
+      var minu = Math.floor(time / 60);
+      var sec = time % 60;
+      return minu + ':' + sec;
+    }
+  }
+},835,[],"TimeUtils.js");
 require(337);
 require(0);
 //# sourceMappingURL=index.map

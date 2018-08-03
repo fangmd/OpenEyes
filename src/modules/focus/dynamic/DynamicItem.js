@@ -6,6 +6,7 @@ import { commonStyles } from '../../../styles/CommonStyles';
 import { Colors } from '../../../styles/Colors';
 import propTypes from 'prop-types';
 import { FontSize } from '../../../styles/FontSize';
+import { formatTimeToMin } from '../../../utils/TimeUtils';
 
 
 class DynamicItem extends React.Component {
@@ -49,9 +50,19 @@ class DynamicItem extends React.Component {
 
     _renderVideo() {
         let { data } = this.props.data
+        let firTime = formatTimeToMin(data.simpleVideo.duration);
         return (
             <View style={styles.videoRoot}>
-                <Text>Video</Text>
+                <View>
+                    <Image style={styles.videoImg} source={{ uri: data.simpleVideo.cover.feed }} />
+                    <Text style={styles.videoDuration}>{firTime}</Text>
+                </View>
+
+                <View style={styles.videoRight}>
+                    <Text style={styles.videoTitle}>{data.simpleVideo.title}</Text>
+                    <Text style={styles.category}>#{data.simpleVideo.category}</Text>
+                </View>
+
             </View>
         )
     }
@@ -65,7 +76,7 @@ const styles = StyleSheet.create({
     left: {
         width: 60,
         alignItems: 'center',
-        marginTop: 24,
+        marginTop: 18,
     },
     img: {
         height: 37,
@@ -76,7 +87,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        marginTop: 24,
+        marginTop: 16,
         marginBottom: 4,
         fontWeight: 'bold',
     },
@@ -86,6 +97,7 @@ const styles = StyleSheet.create({
         marginRight: 14,
     },
     videoRoot: {
+        flexDirection: 'row',
         marginRight: 16,
         marginBottom: 8,
         backgroundColor: Colors.itemBg_f6f6f6,
@@ -93,6 +105,7 @@ const styles = StyleSheet.create({
         paddingLeft: 13,
         paddingBottom: 11,
         paddingRight: 13,
+        borderRadius: 8,
     },
     reply: {
         color: Colors.text_grey,
@@ -109,6 +122,38 @@ const styles = StyleSheet.create({
         color: Colors.text_444444,
         fontSize: FontSize.item_title,
         marginRight: 20,
+    },
+    videoImg: {
+        width: 130,
+        height: 72,
+    },
+    videoDuration: {
+        position: 'absolute',
+        textAlign: 'center',
+        backgroundColor: Colors.trans_bg,
+        color: 'white',
+        width: 38,
+        height: 19,
+        borderRadius: 2,
+        fontSize: FontSize.item_subtitle,
+        bottom: 2,
+        right: 2,
+    },
+    videoRight: {
+        flex: 1,
+        paddingLeft: 13,
+        paddingRight: 11,
+        justifyContent: 'center',
+    },
+    videoTitle: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: FontSize.item_title,
+    },
+    category:{
+        fontSize: FontSize.item_title_13,
+        color: Colors.text_grey,
+        marginTop: 4,
     }
 })
 

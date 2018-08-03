@@ -6,7 +6,7 @@ export const Colors = {
     text_grey_88888: '#888888',
     text_f8f8f8: '#8a8a8a',
     text_444444: '#444444',
-    
+
     white: '#fff',
 
     itemBg: '#fff',
@@ -15,4 +15,6 @@ export const Colors = {
     divideHorizontal: '#adadad',
     divide: '#adadad',
     divide_ededed: '#ededed',
+
+    trans_bg: '#000000',
 };

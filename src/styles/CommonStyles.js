@@ -40,6 +40,6 @@ export const commonStyles = StyleSheet.create({
     },
     rowRoot:{
         flexDirection: 'row',
-    }
+    },
 });
 
