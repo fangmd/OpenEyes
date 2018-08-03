@@ -1,6 +1,7 @@
 import { StyleSheet, Platform } from 'react-native';
 import * as Constants from '../constants/C';
 import { Colors } from './Colors';
+import { FontSize } from './FontSize';
 
 
 export const commonStyles = StyleSheet.create({
@@ -21,5 +22,24 @@ export const commonStyles = StyleSheet.create({
         height: 1,
         backgroundColor: Colors.divide,
     },
+    divideHorizontal_2:{
+        height: 1,
+        backgroundColor: Colors.divide_ededed,
+    },
+    title:{
+        color: 'black',
+        fontSize: FontSize.item_title_15,
+    },
+    content:{
+        color: Colors.text_444444,
+        fontSize: FontSize.item_title,
+    },
+    subTitle:{
+        color: Colors.text_grey,
+        fontSize: FontSize.item_subtitle,
+    },
+    rowRoot:{
+        flexDirection: 'row',
+    }
 });
 

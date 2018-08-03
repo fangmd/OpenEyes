@@ -15,7 +15,7 @@ class DynamicScreen extends React.Component {
     }
 
     render() {
-        let { refreshing , data} = this.props;
+        let { refreshing, data } = this.props;
 
         return (
             <View style={commonStyles.screenRoot}>
@@ -42,19 +42,22 @@ class DynamicScreen extends React.Component {
         this.props.dispatch(refresh());
     }
 
-    _renderItem = (item) => {
-        <DynamicItem data={item}
-            _onItemClick={this._onItemClick} />
-    }
+    _renderItem = (({ item }) => {
+        return (
+            <DynamicItem
+                data={item}
+                _onItemClick={this._onItemClick} />
+        );
+    })
+
 
     _renderEmpty = () => {
         return (
-            <Text style={{flex: 1}}> Empty </Text>
+            <Text style={{ flex: 1 }}> Empty </Text>
         );
     }
 
     _handleRefresh = () => {
-        console.log('refresh');
         this.props.dispatch(refresh());
     }
 

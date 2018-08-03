@@ -7,4 +7,8 @@ export const FontSize = {
     menu_item: 14,
 
     toolBarTitle: 18,
+
+    item_title: 14,
+    item_subtitle: 12,
+    item_title_15: 15,
 };
