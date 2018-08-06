@@ -46,7 +46,8 @@ class DynamicScreen extends React.Component {
         return (
             <DynamicItem
                 data={item}
-                _onItemClick={this._onItemClick} />
+                _onItemReplyClick={this._onItemReplyClick}
+                _onItemVideoClick={this._onItemVideoClick} />
         );
     })
 
@@ -65,10 +66,13 @@ class DynamicScreen extends React.Component {
 
     }
 
-    _onItemClick = (item) => {
+    _onItemVideoClick = (item) => {
+        console.log('video click')
 
     }
-
+    _onItemReplyClick = (item) => {
+        console.log('_onItemReplyClick click')
+    }
 
 }
 

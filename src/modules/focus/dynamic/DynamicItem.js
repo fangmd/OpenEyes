@@ -1,13 +1,13 @@
 'use strict';
 
 import React from 'react';
-import { View, StyleSheet, Image, Text } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableNativeFeedback, Platform } from 'react-native';
 import { commonStyles } from '../../../styles/CommonStyles';
 import { Colors } from '../../../styles/Colors';
 import propTypes from 'prop-types';
 import { FontSize } from '../../../styles/FontSize';
 import { formatTimeToMin } from '../../../utils/TimeUtils';
-
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class DynamicItem extends React.Component {
 
@@ -25,6 +25,7 @@ class DynamicItem extends React.Component {
                         source={{ uri: data.user.avatar }} />
                 </View>
                 <View style={styles.right}>
+
                     <Text style={[commonStyles.title, styles.title]}>{data.user.nickname}</Text>
                     <View style={commonStyles.rowRoot}>
                         <Text style={[commonStyles.subTitle]}>评论：</Text>
@@ -37,7 +38,7 @@ class DynamicItem extends React.Component {
                         <Text style={styles.reply}>回复</Text>
                         <Text style={styles.time}>09:17</Text>
                         <Text style={styles.subscribeCnt}>12</Text>
-                        <Image />
+                        <Ionicons style={styles.subscribeImg} name='ios-thumbs-up-outline' size={18} color={Colors.text_grey} />
                     </View>
 
                     <View style={[commonStyles.divideHorizontal_2, { marginTop: 8, marginRight: 12 }]} />
@@ -48,22 +49,32 @@ class DynamicItem extends React.Component {
         )
     }
 
+    _onVideoClick = () => {
+        this.props._onItemVideoClick(this.props.data)
+    }
+
     _renderVideo() {
         let { data } = this.props.data
         let firTime = formatTimeToMin(data.simpleVideo.duration);
         return (
-            <View style={styles.videoRoot}>
-                <View>
-                    <Image style={styles.videoImg} source={{ uri: data.simpleVideo.cover.feed }} />
-                    <Text style={styles.videoDuration}>{firTime}</Text>
+            <TouchableNativeFeedback
+                onPress={this._onVideoClick}
+                background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+
+                <View style={styles.videoRoot}>
+                    <View>
+                        <Image style={styles.videoImg} source={{ uri: data.simpleVideo.cover.feed }} />
+                        <Text style={styles.videoDuration}>{firTime}</Text>
+                    </View>
+
+                    <View style={styles.videoRight}>
+                        <Text style={styles.videoTitle}>{data.simpleVideo.title}</Text>
+                        <Text style={styles.category}>#{data.simpleVideo.category}</Text>
+                    </View>
+
                 </View>
 
-                <View style={styles.videoRight}>
-                    <Text style={styles.videoTitle}>{data.simpleVideo.title}</Text>
-                    <Text style={styles.category}>#{data.simpleVideo.category}</Text>
-                </View>
-
-            </View>
+            </TouchableNativeFeedback>
         )
     }
 }
@@ -121,7 +132,7 @@ const styles = StyleSheet.create({
     subscribeCnt: {
         color: Colors.text_444444,
         fontSize: FontSize.item_title,
-        marginRight: 20,
+        marginRight: 5,
     },
     videoImg: {
         width: 130,
@@ -150,15 +161,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: FontSize.item_title,
     },
-    category:{
+    category: {
         fontSize: FontSize.item_title_13,
         color: Colors.text_grey,
         marginTop: 4,
+    },
+    subscribeImg: {
+        marginRight: 18,
     }
 })
 
 DynamicItem.propTypes = {
-    data: propTypes.any
+    data: propTypes.any,
+    _onItemVideoClick: propTypes.func,
+    _onItemReplyClick: propTypes.func,
 }
 
 export default DynamicItem;
