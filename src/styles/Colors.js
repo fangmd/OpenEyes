@@ -17,4 +17,5 @@ export const Colors = {
     divide_ededed: '#ededed',
 
     trans_bg: '#000000',
+    trans_img_bg: 0x00000000,
 };

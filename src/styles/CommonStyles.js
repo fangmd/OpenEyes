@@ -26,6 +26,10 @@ export const commonStyles = StyleSheet.create({
         height: 1,
         backgroundColor: Colors.divide_ededed,
     },
+    divideHorizontal_3:{
+        height: 0.5,
+        backgroundColor: Colors.divide_ededed,
+    },
     title:{
         color: 'black',
         fontSize: FontSize.item_title_15,
@@ -41,5 +45,9 @@ export const commonStyles = StyleSheet.create({
     rowRoot:{
         flexDirection: 'row',
     },
+    divideHorizontal_white:{
+        height: 0.5,
+        backgroundColor: Colors.white,
+    }
 });
 

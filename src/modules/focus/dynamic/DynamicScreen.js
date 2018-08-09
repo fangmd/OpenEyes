@@ -67,8 +67,7 @@ class DynamicScreen extends React.Component {
     }
 
     _onItemVideoClick = (item) => {
-        console.log('video click')
-
+        this.props.navigation.navigate('WorkDetail', {id: item.data.simpleVideo.id})
     }
     _onItemReplyClick = (item) => {
         console.log('_onItemReplyClick click')

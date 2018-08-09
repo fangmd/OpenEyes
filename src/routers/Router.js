@@ -10,7 +10,7 @@ import * as UImage from '../styles/Imgs';
 import { Image } from 'react-native';
 import { commonStyles } from '../styles/CommonStyles';
 import WebViewScreen from '../modules/webview/WebViewScreen';
-
+import WorkDetailScreen from '../modules/workdetail/WorkDetailScreen';
 
 const mainTab = createBottomTabNavigator(
     {
@@ -51,6 +51,7 @@ export const Router = createStackNavigator({
         screen: mainTab,
     },
     WebView: WebViewScreen,
+    WorkDetail: WorkDetailScreen,
 },
     {
         navigationOptions: {
