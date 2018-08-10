@@ -37,7 +37,7 @@ class DynamicItem extends React.Component {
                     <View style={commonStyles.rowRoot}>
                         <Text style={styles.reply}>回复</Text>
                         <Text style={styles.time}>09:17</Text>
-                        <Text style={styles.subscribeCnt}>12</Text>
+                        <Text style={styles.subscribeCnt}>{data.reply.likeCount}</Text>
                         <Ionicons style={styles.subscribeImg} name='ios-thumbs-up-outline' size={18} color={Colors.text_grey} />
                     </View>
 
