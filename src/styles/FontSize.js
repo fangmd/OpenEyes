@@ -12,4 +12,5 @@ export const FontSize = {
     item_title_13: 13,
     item_subtitle: 12,
     item_title_15: 15,
+    item_title_12: 12,
 };

@@ -48,6 +48,18 @@ export const commonStyles = StyleSheet.create({
     divideHorizontal_white:{
         height: 0.5,
         backgroundColor: Colors.white,
+    },
+    black_14:{
+        color: 'black',
+        fontSize: FontSize.item_title_14,
+    },
+    black_13:{
+        color: 'black',
+        fontSize: FontSize.item_title_13,
+    },
+    gray_12:{
+        color: Colors.text_grey,
+        fontSize: FontSize.item_title_12,
     }
 });
 
