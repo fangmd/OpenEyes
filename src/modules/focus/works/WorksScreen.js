@@ -45,8 +45,8 @@ class WorkScreen extends React.Component {
         )
     }
 
-    _onItemClick = () => {
-
+    _onItemClick = (item) => {
+        this.props.navigation.navigate('WorkDetail', { id: item.item.data.content.data.id })
     }
 
     _renderEmpty = () => {
