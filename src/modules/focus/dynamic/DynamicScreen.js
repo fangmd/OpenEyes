@@ -27,7 +27,7 @@ class DynamicScreen extends React.Component {
                     refreshing={refreshing}
                     onRefresh={this._handleRefresh}
                     onEndReached={this._loadMore}
-                    onEndReachedThreshold={0.1}
+                    onEndReachedThreshold={0.2}
                     renderItem={this._renderItem}
                     ListEmptyComponent={this._renderEmpty}
                     keyExtractor={(item, index) => String(index)}
@@ -63,11 +63,11 @@ class DynamicScreen extends React.Component {
     }
 
     _loadMore = () => {
-
+        this.props.dispatch(loadMore(this.props.index + 1));
     }
 
     _onItemVideoClick = (item) => {
-        this.props.navigation.navigate('WorkDetail', {id: item.data.simpleVideo.id})
+        this.props.navigation.navigate('WorkDetail', { id: item.data.simpleVideo.id })
     }
     _onItemReplyClick = (item) => {
         console.log('_onItemReplyClick click')
@@ -80,6 +80,7 @@ function bindAction(store) {
         data: store.DynamicReducer.data,
         error: store.DynamicReducer.error,
         refreshing: store.DynamicReducer.refreshing,
+        index: store.DynamicReducer.index,
     }
 }
 

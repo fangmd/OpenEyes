@@ -22,10 +22,13 @@ export default handleActions({
     },
     [types.NYMAMIC_LOAD_MORE_DONE]: {
         next(state, action) {
+            let ret = state.data.concat(action.payload.itemList);
+            let index = state.index + 1;
             return {
                 ...state,
                 refreshing: false,
-                data: action.payload.itemList,
+                data: ret,
+                index: index,
             }
         }
     },

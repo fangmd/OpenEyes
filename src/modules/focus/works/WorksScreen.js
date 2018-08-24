@@ -4,7 +4,7 @@ import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { commonStyles } from '../../../styles/CommonStyles';
 import { connect } from 'react-redux';
-import { refresh } from './WorkScreenAction';
+import { refresh, loadMore } from './WorkScreenAction';
 import WorkItem from './WorkItem';
 
 
@@ -25,6 +25,10 @@ class WorkScreen extends React.Component {
                     renderItem={this._renderItem}
                     keyExtractor={(item, index) => String(index)}
                     ListEmptyComponent={this._renderEmpty}
+
+                    onRefresh={this._onRefresh}
+                    onEndReached={this._onLoadMore}
+                    onEndReachedThreshold={0.2}
                 />
 
 
@@ -51,9 +55,18 @@ class WorkScreen extends React.Component {
         );
     }
 
+    _onRefresh = () => {
+        this.props.dispatch(refresh())
+    }
+
+    _onLoadMore = () => {
+        this.props.dispatch(loadMore(this.props.index + 1))
+    }
+
     componentDidMount() {
         this.props.dispatch(refresh())
     }
+
 }
 
 function bindAction(store) {
