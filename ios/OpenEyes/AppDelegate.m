@@ -9,6 +9,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "RNUMConfigure.h"
+#import <UMCommon/UMCommon.h>
 
 @implementation AppDelegate
 
@@ -29,6 +31,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [UMConfigure setLogEnabled:YES];
+  [RNUMConfigure initWithAppkey:@"5b7fccc5f43e4802cd000019" channel:@"App Store"];
   return YES;
 }
 
